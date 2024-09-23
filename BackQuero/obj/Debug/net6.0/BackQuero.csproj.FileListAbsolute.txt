@@ -1,0 +1,17 @@
+C:\Users\olopes\Desktop\back\quero-challenge-backend\BackQuero\bin\Debug\net6.0\BackQuero.exe
+C:\Users\olopes\Desktop\back\quero-challenge-backend\BackQuero\bin\Debug\net6.0\BackQuero.deps.json
+C:\Users\olopes\Desktop\back\quero-challenge-backend\BackQuero\bin\Debug\net6.0\BackQuero.runtimeconfig.json
+C:\Users\olopes\Desktop\back\quero-challenge-backend\BackQuero\bin\Debug\net6.0\BackQuero.dll
+C:\Users\olopes\Desktop\back\quero-challenge-backend\BackQuero\bin\Debug\net6.0\BackQuero.pdb
+C:\Users\olopes\Desktop\back\quero-challenge-backend\BackQuero\obj\Debug\net6.0\BackQuero.csproj.AssemblyReference.cache
+C:\Users\olopes\Desktop\back\quero-challenge-backend\BackQuero\obj\Debug\net6.0\BackQuero.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\olopes\Desktop\back\quero-challenge-backend\BackQuero\obj\Debug\net6.0\BackQuero.AssemblyInfoInputs.cache
+C:\Users\olopes\Desktop\back\quero-challenge-backend\BackQuero\obj\Debug\net6.0\BackQuero.AssemblyInfo.cs
+C:\Users\olopes\Desktop\back\quero-challenge-backend\BackQuero\obj\Debug\net6.0\BackQuero.csproj.CoreCompileInputs.cache
+C:\Users\olopes\Desktop\back\quero-challenge-backend\BackQuero\obj\Debug\net6.0\BackQuero.csproj.CopyComplete
+C:\Users\olopes\Desktop\back\quero-challenge-backend\BackQuero\obj\Debug\net6.0\BackQuero.dll
+C:\Users\olopes\Desktop\back\quero-challenge-backend\BackQuero\obj\Debug\net6.0\refint\BackQuero.dll
+C:\Users\olopes\Desktop\back\quero-challenge-backend\BackQuero\obj\Debug\net6.0\BackQuero.pdb
+C:\Users\olopes\Desktop\back\quero-challenge-backend\BackQuero\obj\Debug\net6.0\BackQuero.genruntimeconfig.cache
+C:\Users\olopes\Desktop\back\quero-challenge-backend\BackQuero\obj\Debug\net6.0\ref\BackQuero.dll
+C:\Users\olopes\Desktop\back\quero-challenge-backend\BackQuero\bin\Debug\net6.0\Newtonsoft.Json.dll
