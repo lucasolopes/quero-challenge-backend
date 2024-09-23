@@ -59,7 +59,7 @@ O projeto utiliza o pacote `Newtonsoft.Json` para manipulação de dados JSON. A
 
 - **Restaurar Dependências**: `dotnet restore`
 - **Compilar o Projeto**: `dotnet build`
-- **Executar o Projeto**: `dotnet run`
+- **Executar o Projeto**: `dotnet run --project <NOME_DO_ARQUIVO>.csproj`
 
 ### Contribuição
 
