@@ -5,19 +5,19 @@ namespace Entities.Offers
 {
     public class Offers
     {
-
-        string courseName { get; set; }
-
-        float rating { get; set; }
-
-        decimal fullPrice { get; set; }
-
-        decimal offeredPrice { get; set; }
-
-        string king { get; set; }
-
-        string level { get; set; }
-        string iesLogo { get; set; }
-        string iesName { get; set; }
+        public string CourseName { get; set; } = string.Empty;
+        public float Rating { get; set; }
+        public decimal FullPrice { get; set; }
+        public decimal OfferedPrice { get; set; }
+        public string Kind { get; set; } = string.Empty;
+        public string Level { get; set; } = string.Empty;
+        public string IesLogo { get; set; } = string.Empty;
+        public string IesName { get; set; } = string.Empty;
     }
+
+    public class OffersData
+    {
+        public List<Offers> Offers { get; set; }
+    }
+
 }
