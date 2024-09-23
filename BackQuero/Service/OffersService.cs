@@ -16,11 +16,45 @@ namespace Service.OffersService
             databaseContext = new DatabaseContext();
         }
 
-        public List<OffersDto> GetAllOffers(int pageNumber)
+        public (List<OffersDto> offers, bool hasMorePages) GetAllOffers(int pageNumber, string? level = null, string? kind = null, decimal? minPrice = null, decimal? maxPrice = null, string? searchTerm = null, string? orderBy = null)
         {
             int pageSize = 10;
-            // Get all offers from the database
             List<Offers> offers = databaseContext.GetAll();
+
+            // Apply filters
+            if (!string.IsNullOrEmpty(level))
+            {
+                offers = offers.Where(o => o.Level.Equals(level, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(kind))
+            {
+                offers = offers.Where(o => o.Kind.Equals(kind, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            if (minPrice.HasValue)
+            {
+                offers = offers.Where(o => o.OfferedPrice >= minPrice.Value).ToList();
+            }
+
+            if (maxPrice.HasValue)
+            {
+                offers = offers.Where(o => o.OfferedPrice <= maxPrice.Value).ToList();
+            }
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                offers = offers.Where(o => o.CourseName.IndexOf(searchTerm, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+            }
+
+            // Apply sorting
+            offers = orderBy switch
+            {
+                "courseName" => offers.OrderBy(o => o.CourseName).ToList(),
+                "offeredPrice" => offers.OrderBy(o => o.OfferedPrice).ToList(),
+                "rating" => offers.OrderByDescending(o => o.Rating).ToList(),
+                _ => offers
+            };
 
             // Implement pagination
             var paginatedOffers = offers
@@ -28,40 +62,11 @@ namespace Service.OffersService
                 .Take(pageSize)
                 .ToList();
 
-            List<OffersDto> offersDtos = new List<OffersDto>();
+            bool hasMorePages = offers.Count > pageNumber * pageSize;
 
-            foreach (var offer in paginatedOffers)
-            {
-                offersDtos.Add(offer.Converter());
-            }
-
-            foreach (var oferta in offersDtos)
-            {
-                string tipo = oferta.Kind == "presencial" ? "Presencial" : "EaD";
-                string nivel = oferta.Nivel switch
-                {
-                    "bacharelado" => "Graduação (bacharelado)",
-                    "tecnologo" => "Graduação (tecnólogo)",
-                    "licenciatura" => "Graduação (licenciatura)",
-                    _ => "Nível desconhecido"
-                };
-
-                string precoCheioFormatado = oferta.PrecoCheio.ToString("C", new CultureInfo("pt-BR"));
-                string precoOferecidoFormatado = oferta.PrecoOferecido.ToString("C", new CultureInfo("pt-BR"));
-                decimal desconto = ((oferta.PrecoCheio - oferta.PrecoOferecido) / oferta.PrecoCheio) * 100;
-
-                Console.WriteLine($"Instituição: {oferta.IesName} {oferta.IesLogo}");
-                Console.WriteLine($"Tipo: {tipo}");
-                Console.WriteLine($"Nível: {nivel}");
-                Console.WriteLine($"Avaliação: {oferta.Rating}");
-                Console.WriteLine($"Preço Cheio: {precoCheioFormatado}");
-                Console.WriteLine($"Preço Oferecido: {precoOferecidoFormatado}");
-                Console.WriteLine($"Desconto: {Math.Round(desconto)}%");
-                Console.WriteLine(new string('-', 30));
-            }
-
-            return offersDtos;
+            return (paginatedOffers.Select(offer => offer.Converter()).ToList(), hasMorePages);
         }
+
 
     }
 }
