@@ -1,5 +1,5 @@
 using System;
-
+using Responses.OffersDto;
 
 namespace Entities.Offers
 {
@@ -13,11 +13,28 @@ namespace Entities.Offers
         public string Level { get; set; } = string.Empty;
         public string IesLogo { get; set; } = string.Empty;
         public string IesName { get; set; } = string.Empty;
+
+        public OffersDto Converter()
+        {
+            return new OffersDto()
+            {
+                IesLogo = this.IesLogo,
+                IesName = this.IesName,
+                Kind = this.Kind,
+                Nivel = this.Level,
+                NomeCurso = this.CourseName,
+                PrecoCheio = this.FullPrice,
+                PrecoOferecido = this.OfferedPrice,
+                Rating = this.OfferedPrice,
+
+            };
+        }
     }
 
     public class OffersData
     {
         public List<Offers> Offers { get; set; }
     }
+
 
 }

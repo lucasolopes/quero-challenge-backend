@@ -17,9 +17,9 @@ namespace Repositories.DatabaseContext
             produtos = offersData?.Offers ?? new List<Offers>();
         }
 
-        public string getoneOffer()
+        public List<Offers> GetAll()
         {
-            return produtos.FirstOrDefault().IesName;
+            return produtos;
         }
     }
 }
